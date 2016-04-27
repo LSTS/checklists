@@ -1,0 +1,57 @@
+body {
+  font-family: Arial, Verdana;
+}
+
+div.panel {
+  float: left;
+  width: auto;
+}
+
+table {
+   margin: 12px 12px 12px 12px;
+   
+}
+
+@media screen and (min-width: 640px) {
+  div.panel {
+    width: auto;
+    width: 46%;
+    margin: 0 2% 0 2%;
+  }
+}
+
+.checklist {
+  width: auto;
+  margin: 0;
+  padding: 0;
+}
+
+.checklist li {
+  list-style: none;
+  margin: 10px 0 5px 0;
+  padding: 5px;
+  background-color: #ffcccc;
+  color: #aa3333;
+  border-radius: 5px;
+}
+
+.checklist li[data-checked="true"] {
+  background-color: #aaeeaa;
+  color: #117711;
+}
+
+.checklist li input {
+  float: left;
+}
+
+.checklist li div.item {
+  font-weight: bold;
+  margin: 0 0 0 25px;
+}
+
+.checklist li div.description {
+  font-weight: normal;
+  font-size: 12px;
+  color: #333;
+  margin: 0 0 0 25px;
+}
