@@ -8,30 +8,16 @@
   <script type="text/javascript" src="lib/underscore.js"></script>
   <script type="text/javascript" src="lib/backbone.js"></script>
   <script type="text/javascript" src="lib/backbone.localStorage.js"></script>
-  <script type="text/javascript" src="lib/w3data.js"></script>
+  <script type="text/javascript" src="lib/toc.min.js"></script>
   <script type="text/javascript" src="js/checklist.js"></script>
+
   <meta charset="UTF-8">
 </head>
 
 <body>
 
-<h3>Dia anterior</h3>
-<ol>
-<li><a href="#lsts_logistica">Preparação no LSTS - Logística</a>
-<li><a href="#lsts_software">Preparação no LSTS - Software</a>
-<li><a href="#lsts_hardware">Preparação no LSTS - Hardware</a>
-</ol>
-
-<h3>Início das operaçoes</h3>
-<ol>
-<li><a href="#chegada">Chegada ao local</a>
-<li><a href="#manta_setup">Gateway</a>
-<li><a href="#auv_setup">Preparar veiculo</a>
-<li><a href="#base_setup">Montagem da base</a>
-<li><a href="#auv_on">Ligar veiculo</a>
-
-</ol>
-
+<div class="toc">	
+</div>
 
 <h3 id="lsts_logistica">Preparação no LSTS - Logística</h3>
 	<ul class="checklist">
@@ -159,6 +145,7 @@
 
   <script type="text/javascript">
     Checklist.init();
+	$('.toc').toc({});	
   </script>
   <button onclick="Checklist.clear()">Clear</button>
 
