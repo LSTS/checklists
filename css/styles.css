@@ -47,36 +47,34 @@ table {
   float: left;
 }
 
-#wrapper { 
-  width: 980px;
-  margin: 0 auto;
-  margin-bottom: 1000px;
-}
-
-.toc {
-  background-color: #eef;
-  position: fixed;
-  width: 300px;
-  right: 20px;
-  top: 20px;
-  border: 1px solid #ddd;
-  color: #333;
-}
 .toc a {
-  color: #333;
-
-}
-.toc .tocH2 {
-  margin-left: 10px
-}
-.toc .tocH3 {
-  margin-left: 20px
-}
-.toc-active {
-  color: #000;
-  font-weight: bold;
-}
-.toc.right {
-  right: 0
+  color: #00a;
+  text-decoration: none;
+  font-size: 20px;
 }
 
+.toc ul {
+  list-style-type: none;
+}
+
+.reset {
+    background-color: #0C0000; /* Green */
+    border: none;
+    color: white;
+    padding: 5px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    border-radius: 5px;
+    right: 10px;
+    bottom: 10px;
+    position: fixed;
+}
+
+.reset:hover {
+    background-color: #FF4E50; /* Green */
+    color: white;
+}
