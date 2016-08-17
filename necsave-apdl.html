@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html manifest="offline.appcache">
+<head>
+  <title>Operation Checklists</title>
+  <link rel="stylesheet" href="css/styles.css"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script type="text/javascript" src="lib/jquery.js"></script>
+  <script type="text/javascript" src="lib/underscore.js"></script>
+  <script type="text/javascript" src="lib/backbone.js"></script>
+  <script type="text/javascript" src="lib/backbone.localStorage.js"></script>
+  <script type="text/javascript" src="lib/toc.min.js"></script>
+  <script type="text/javascript" src="js/checklist.js"></script>
+
+  <meta charset="UTF-8">
+</head>
+
+<body>
+
+<div class="toc"></div>
+
+<button class="reset" onclick="Checklist.clear()">Uncheck all</button>
+
+<h3>Preparação no LSTS - Logística</h3>
+	<ul class="checklist">
+	<li>Definir equipa e respetivos papéis (LSTS)
+	<li>Lançar agenda de missão (Coordenador)
+	<li>Reunir info sobre fonte de energia disponível/tomadas no local de operação (Técnico)
+	<li>Ver existência de cartões 3G/4G para local de operação (LSTS)
+	<li>Ver saldo cartões UZO (veículos + ACCU; consultar gdoc "Saldos UZO") (Coordenador)
+	</ul>
+
+<h3>Preparação no LSTS - Software</h3>
+	<ul class="checklist">
+		<li>Neptus: Definir versão NEPTUS e atualizar laptops (Operador)
+		<li>DUNE: Definir versão DUNE e actualizar factory (Operador)
+    	<li>Necsave: Definir versão e actualizar factory (Operador)		
+	</ul>
+
+<h3>Preparação no LSTS - Carregar Baterias</h3>
+	<ul class="checklist">
+		<li>Veículos
+		<li>Mantas
+		<li>ACCUs
+		<li>Laptops
+		<li>Pinger/Receiver
+	</ul>
+
+<h3>Chegada ao local</h3>
+	<ul class="checklist">
+		<li>Verificar se zona de operação se encontra livre (Coordenador)
+		<li>Contactar responsável pelo apoio às operações (APDL: Mestre Hugo: 968 337 662; Mestre X: 968 337 663; Eng. Sequeira: 967 949 269; Polícia Marítima (alternativa para ajuda com bote): 916 353 249) (Coordenador)
+		<li>Centro de Comando: Garantir/instalar alimentação elétrica (Técnico)
+		<li>Testar pingers nos veículos
+		<li>Introduzir cartão 3G/4G na Gateway (Técnico)
+		<li>Ligar gateway e veículos (Técnico)
+		<li>Testar teleoperação (Técnico)
+	</ul>
+
+<h3>Montagem da Base</h3>
+	<ul class="checklist">
+		<li>Ligar computador(es) à rede eléctrica (Operador)
+		<li>Ligar computador(es) ao Wi-Fi LSTS (Operador)
+		<li>Arrancar Neptus (Operador)
+		<li>Neptus: Activar Internet (3G) na Gateway (Operador)
+	</ul>
+
+<h3>Configurar veículos</h3>
+	<ul class="checklist">
+	<li>Verificar estado das entidades
+	<li>Testar controlo remoto (ACCU ou Joystick) (Operador)
+	<li>Activar "Emergency Monitor" e verificar / alterar "SMS Recipient Number". 
+	<li>Testar configuração GSM enviando Abort ao veículo.	
+	</ul>
+
+<h3>Colocação na Água</h3>
+	<ul class="checklist">
+		<li>Verificar trimming do veículo
+		<li>Ligar ACCU à rede WiFi e validar que este vê o veículo
+		<li>Colocar veículo na água e teleoperar para zona de missão
+	</ul>
+
+<h3>Início de Plano</h3>
+<ul class="checklist">
+    <li>Activar Reports acústicos e validar comunicações acústicas (Operador)
+	<li>Definir planos de segurança e enviar (Operador)
+	<li>Validar que zona do plano é segura (Operador + Coordenador)
+</ul>
+
+<h3>Missão Necsave</h3>
+<ul class="checklist">
+	<li>Colocar entrada com hora e teste a executar no debriefing.
+    <li>Colocar todos os veículos em Service (Operador)
+	<li>Limpar plataformas na consola necsave (Operador)
+	<li>Arrancar um a um o necsave com configuração correcta nos CPU auxiliares (Operador)
+	<li>Arrancar necsave no computador local usando a gateway como plataforma (Operador)	
+	<li>Colocar entrada com hora e resultado do teste no debriefing. (Operador)
+</ul>
+
+<h3>Fim do dia de missão</h3>
+<ul class="checklist">
+	<li>Manta: Lavar sistemas molhados com água doce (Técnico)
+	<li>Manta: Remover cartão 3G/4G e fechar tampas da manta. (Técnico)
+	<li>Manta: Colocar sistemas a carregar: manta, veiculos, laptops, ACCU, radios (Técnico)
+	<li>Guardar equipamento. (Técnico)
+</ul>
+
+<h3>Upload de Logs</h3>
+<ul class="checklist">
+	<li>Neptus: Sacar todos os logs dos veículos e mantas (Operador)
+	<li>Neptus: Correr gather-day-logs.sh dentro da pasta 'helper-scripts' no Neptus. (Operador)
+	<li>Neptus: Fazer upload dos logs de missão (respeitar formatação). (Operador)
+	<li>Neptus: Fazer upload do debriefing de missão após reunião. (Coordenador)
+</ul>
+
+  <script type="text/javascript">
+    Checklist.init();
+	$('.toc').toc({});	
+  </script>
+</body>
+
+</html>
