@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html manifest="offline.appcache">
+<head>
+  <title>Operation Checklists</title>
+  <link rel="stylesheet" href="css/styles.css"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script type="text/javascript" src="lib/jquery.js"></script>
+  <script type="text/javascript" src="lib/underscore.js"></script>
+  <script type="text/javascript" src="lib/backbone.js"></script>
+  <script type="text/javascript" src="lib/backbone.localStorage.js"></script>
+  <script type="text/javascript" src="lib/toc.min.js"></script>
+  <script type="text/javascript" src="js/checklist.js"></script>
+
+  <meta charset="UTF-8">
+</head>
+
+<body>
+
+<div class="toc"></div>
+
+<button class="reset" onclick="Checklist.clear()">Uncheck all</button>
+
+<h3>Prior to the demo</h3>
+	<ul class="checklist">
+	<li>Create an area, of about 180 x 250 meters. Call it "RO3_survey"
+	<li>Create an area, rotated 90 degrees of about 180 x 250 meters. Call it "HET_survey"
+	<li>Check that test 09_Heterogeneous has NP2 moving underwater and "Simple" planner mode
+	</ul>
+
+<h3>Heterogeneous ScanArea</h3>
+	<ul class="checklist">
+	<li>Send RHIB to entrance of the base to provide safety
+	<li>Place NP1, Durius and NP2 in the area to be surveyed (station keeping). NP1 north, Durius middle and NP2 south
+	<li>Make sure no necsave platforms are running.
+	<li>Clear Necsave messages and platforms.
+	<li>Start etc/SeaTrials/09_Heterogeneous configuration on NP1, NP2, Durius and GCS.
+	<li>Wait for platforms to connect
+	<li>Stop station keeping on all platforms.
+	<li>Send necsave mission to platforms (ENV_SURVEY), "het_survey", "Heterogeneous Scan Area Demo".
+	<li>After the demo completes, stop NECSAVE on all platforms.
+	</ul>
+
+<h3>Pattern Formation</h3>
+	<ul class="checklist">
+	<li>Add a mine danger area in the map close to the subs pier
+	<li>Create a path plan from a place close to the platforms over the MDA and into subs pier - call it "MDA_PATH"
+	<li>Bring Durius, NP1 and NP2 closer together, having Durius facing the subs pier in the front of the AUVs
+	<li>Make sure no necsave platforms are running.
+	<li>Clear Necsave messages and platforms.
+	<li>Start etc/SeaTrials/08_PF configuration on NP1, NP2, Durius and GCS.
+	<li>Check that the plan is still valid and change (if needed)
+	<li>Wait for platforms to connect
+	<li>Stop any plans currently running on the platforms.	
+	<li>Send necsave mission "AREA_SWEEP", "MDA_PATH", "Triangle", Leader=durius, F1 = north platf, F2 = south platf, "PF DEMO"
+	<li>After the demo completes, stop NECSAVE on all platforms
+	<li>Send Durius to recovery position	
+	</ul>
+
+<h3>RO3 Mesh</h3>
+	<ul class="checklist">
+	<li>Make sure no necsave platforms are running.
+	<li>Clear Necsave messages and platforms.
+	<li>Send XT2, NP1 and NP2 into operational area, near the manta gateway (station keeping).
+	<li>Start etc/SeaTrials/07_RO3_Mesh configuration on NP1, NP2, XT2 and GCS.
+	<li>Wait for platforms to connect
+	<li>Stop Station Keeping on NP1, NP2 and XT2	
+	<li>Send necsave mission (ENV_SURVEY), "RO3_SURVEY", "RO3 Mesh Demo"	
+	<li>Open MeshStatePanel
+	<li>After the demo completes, stop NECSAVE on all platforms
+    <ul>
+
+  <script type="text/javascript">
+    Checklist.init();
+	$('.toc').toc({});	
+  </script>
+</body>
+
+</html>
