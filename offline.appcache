@@ -1,9 +1,11 @@
 CACHE MANIFEST
+/necsave-alfeite.html
 /index.html
 /js/checklist.js
-/lib/backbone.js
-/lib/backbone.localStorage.js
-/lib/jquery.js 
-/lib/toc.min.js 
-/lib/underscore.js
+/js/backbone-min.js
+/js/backbone.localStorage-min.js
+/js/jquery.min.js 
+/js/toc.min.js 
+/js/underscore-min.js
+/js/backbonefire.js
 /css/styles.css

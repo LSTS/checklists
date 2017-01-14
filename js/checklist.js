@@ -12,7 +12,6 @@ var Checklist = Checklist || function () {
     },
   });
 
-  alert(fbkey);
   // Define the collection.
   var CheckBoxCollection = Backbone.Firebase.Collection.extend({
     url: fbref,

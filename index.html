@@ -4,13 +4,14 @@
   <title>Operation Checklists</title>
   <link rel="stylesheet" href="css/styles.css"/>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script type="text/javascript" src="lib/jquery.js"></script>
-  <script type="text/javascript" src="lib/underscore.js"></script>
-  <script type="text/javascript" src="lib/backbone.js"></script>
-  <script type="text/javascript" src="lib/backbone.localStorage.js"></script>
-  <script type="text/javascript" src="lib/toc.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.3.3/backbone-min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/backbone-localstorage.js/1.1.16/backbone.localStorage-min.js"></script>
+  <script type="text/javascript" src="https://cdn.rawgit.com/jgallen23/toc/master/dist/toc.min.js"></script>
+  <script type="text/javascript" src="https://cdn.firebase.com/js/client/2.0.3/firebase.js"></script>
+  <script type="text/javascript" src="https://cdn.firebase.com/libs/backbonefire/0.5.1/backbonefire.js"></script>
   <script type="text/javascript" src="js/checklist.js"></script>
-
   <meta charset="UTF-8">
 </head>
 
@@ -20,129 +21,54 @@
 
 <button class="reset" onclick="Checklist.clear()">Uncheck all</button>
 
-<h3>Preparação no LSTS - Logística</h3>
+<h3>Prior to the demo</h3>
 	<ul class="checklist">
-	<li>Juntar documentação da missão/local (LSTS)
-	<li>Analisar objetivos e definir roadmap de missão (LSTS)
-	<li>Definir equipa e respetivos papéis (LSTS)
-	<li>Definir equipa de prevenção, papéis e meios (LSTS)
-	<li>Definir contactos de emergência (Coordenador)
-	<li>Veículo: Fazer labels com POC's/contatos de emergência dos locais de operação (Técnico)
-	<li>Lançar agenda de missão (Coordenador)
-	<li>Reunir info sobre fonte de energia disponível/tomadas no local de operação (Técnico)
-	<li>Ver existência de cartões 3G/4G para local de operação (LSTS)
-	<li>Ver saldo cartões UZO (veículos + ACCU; consultar gdoc "Saldos UZO") (Coordenador)
+	<li>Create an area, of about 180 x 250 meters. Call it "RO3_survey"
+	<li>Create an area, rotated 90 degrees of about 180 x 250 meters. Call it "HET_survey"
+	<li>Check that test 09_Heterogeneous has NP2 moving underwater and "Simple" planner mode
 	</ul>
 
-<h3>Preparação no LSTS - Software</h3>
+<h3>Heterogeneous ScanArea</h3>
 	<ul class="checklist">
-		<li>Neptus: Definir versão NEPTUS e atualizar laptops (Operador)
-		<li>DUNE: Definir versão DUNE, atualizar laptops e sistemas (Coordenador)
-		<li>Veículo: Garantir compatibilidade IMC (Operador)
-		<li>Dry- e wet-runs para testar sistemas (LSTS)
+	<li>Send RHIB to entrance of the base to provide safety
+	<li>Place NP1, Durius and NP2 in the area to be surveyed (station keeping). NP1 north, Durius middle and NP2 south
+	<li>Make sure no necsave platforms are running.
+	<li>Clear Necsave messages and platforms.
+	<li>Start etc/SeaTrials/09_Heterogeneous configuration on NP1, NP2, Durius and GCS.
+	<li>Wait for platforms to connect
+	<li>Stop station keeping on all platforms.
+	<li>Send necsave mission to platforms (ENV_SURVEY), "het_survey", "Heterogeneous Scan Area Demo".
+	<li>After the demo completes, stop NECSAVE on all platforms.
 	</ul>
 
-<h3>Preparação no LSTS - Hardware</h3>
+<h3>Pattern Formation</h3>
 	<ul class="checklist">
-	<li>Material: Verificar checklist de material (Técnico)
-	<li>Veículo: Carregar baterias: Veiculos, mantas, LBL, ACCU, Laptops, Pinger/Receiver, Radios, GPS, Pilhas (Técnico)
-	<li>Pinger de Emergência: Verificar presença pinger/receiver, auscultadores e hidrofone (Técnico)
-	<li>Pinger de Emergência: Testar pinger do(s) veículo(s) (Técnico)
-	<li>Pinger de Emergência: Garantir documentação da frequência dos pingers nos laptops (Técnico)
+	<li>Add a mine danger area in the map close to the subs pier
+	<li>Create a path plan from a place close to the platforms over the MDA and into subs pier - call it "MDA_PATH"
+	<li>Bring Durius, NP1 and NP2 closer together, having Durius facing the subs pier in the front of the AUVs
+	<li>Make sure no necsave platforms are running.
+	<li>Clear Necsave messages and platforms.
+	<li>Start etc/SeaTrials/08_PF configuration on NP1, NP2, Durius and GCS.
+	<li>Check that the plan is still valid and change (if needed)
+	<li>Wait for platforms to connect
+	<li>Stop any plans currently running on the platforms.	
+	<li>Send necsave mission "AREA_SWEEP", "MDA_PATH", "Triangle", Leader=durius, F1 = north platf, F2 = south platf, "PF DEMO"
+	<li>After the demo completes, stop NECSAVE on all platforms
+	<li>Send Durius to recovery position	
 	</ul>
 
-<h3>Chegada ao local</h3>
+<h3>RO3 Mesh</h3>
 	<ul class="checklist">
-	<li>Verificar se zona de operação se encontra livre (Coordenador)
-	<li>Contactar responsável pelo apoio às operações (APDL: Mestre Hugo: 968 337 662; Mestre X: 968 337 663; Eng. Sequeira: 967 949 269; Polícia Marítima (alternativa para ajuda com bote): 916 353 249) (Coordenador)
-	<li>Centro de Comando: Garantir/instalar alimentação elétrica (Técnico)
-	<li>Rádios: Cada elemento deve ter o seu rádio ligado; Canal 9 (Operador)
-	<li>Pinger de Emergência: Confirmar presença pinger/receiver, auscultadores e hidrofone (Técnico)
-	<li>Pinger de Emergência: Repetir teste ao pinger do(s) veículo(s) (Técnico)
-	</ul>
-
-<h3>Gateway</h3>
-	<ul class="checklist">
-	<li>Gateway: Ligar cabo do transdutor e cabo ethernet da antena (Operador)
-	<li>Gateway: Introduzir cartão 3G/4G na Gateway (Operador)
-	<li>Gateway: Ligar gateway (Operador)
-	<li>Gateway: Utilizar checklist DUNE para inicializar ligação internet (HSDPA/LTE) (Operador)
-	</ul>
-
-<h3>Preparar Veículo</h3>
-	<ul class="checklist">
-	<li>Veículo: Garantir identificação do veículo: contatos e propriedade. (Técnico)
-	<li>Veículo: Garantir refletores colados no veículo: ao longo do corpo e na zona do íman (Técnico)
-	<li>Veículo: Garantir presença da faixa com frequência do pinger. (Técnico)
-	<li>Veículo: Verificar que conector sub-aquático está apertado (Técnico)
-	<li>Veículo: Verificar que orifício de vácuo está fechado (Técnico)
-	</ul>
-
-<h3>Montagem da Base</h3>
-	<ul class="checklist">
-	<li>Centro de Comando: Instalar GPS u-blox ao laptop (Operador)
-	<li>Computadores: Ligar gamepad (Operador)
-	<li>Computadores: Ligar ao AP LSTS (Operador)
-	<li>Computador Principal: Ligar GPS (u-blox) no Neptus, confirmar posição (Operador)
-	<li>ACCU: Ligar ao AP LSTS e iniciar ACCU (Operador)
-	</ul>
-
-<h3>Ligar veículo</h3>
-	<ul class="checklist">
-	<li>Veículo: LEDs respondem como esperado ? (Técnico)
-	<li>Computadores e ACCU: Verificar estado das entidades (Operador)
-	<li>Computadores e ACCU: Definir contato de emergência do veículo (System Settings) (Operador)
-	<li>Computadores e ACCU: Testar controlo remoto (ACCU ou Joystick) (Operador)
-	</ul>
-
-<h3>Beacons</h3>
-	<ul class="checklist">
-	<li>LBL: Preparar conjuntos LBL + cabo + boia + ferro (Técnico)
-	<li>Neptus: Definir LBL no mapa e apontar no GPS de mão (Operador)
-	<li>LBL: Usar GPS para navegar e fundear beacon-X na posição desejada. Marcar posição final no GPS (Técnico)
-	<li>Neptus: Corrigir no mapa a posição do beacon-X e validar com range (Operador)
-	<li>Computador Principal: Enviar configuração dos beacons para o veículo (Operador)
-	</ul>
-
-<h3>Colocação na Água</h3>
-<ul class="checklist">
-	<li>Computador Principal: Definir/Ajustar planos (Operador)
-	<li>Computador Principal: Enviar limites de operação para o veículo (se necessário) (Operador)
-	<li>Computador Principal: Enviar planos de segurança (nome com um carácter, e.g: A) (Operador)
-	<li>Veículo: Colocar veículo na água e verificar trimming (Técnico)
-	<li>Computador Principal: Testes Abort Wi-Fi e Acústica (confirmar recepção SMS) (Operador)
-</ul>
-
-<h3>Movimentação para Àrea de Operações (APDL)</h3>
-<ul class="checklist">
-	<li>Neptus: Garantir que temos 2 sistemas de teleop a funcionar (e.g: laptop #1 e ACCU) (Operador)
-	<li>Teleoperation: Iniciar teleoperação - a manta AP deve acompanhar AUV (Operador)
-	<li>Gateway: No fim, instalar a Manta com o transdutor na água em local com visibilidade e sair de teleop (Técnico)
-</ul>
-
-<h3>Início de Plano</h3>
-<ul class="checklist">
-	<li>Neptus: (Re)Definir planos de segurança e enviar (Operador)
-	<li>Neptus: Definir plano de missão; double-check speed + Z e "avoid locations" no mapa (Operador)
-	<li>Neptus: Double-check payload (Operador)
-	<li>Veículo: Ver se área de operações livre, e executar (Técnico)
-</ul>
-
-<h3>Fim do dia de missão</h3>
-<ul class="checklist">
-	<li>Manta: Lavar sistemas molhados com água doce (Técnico)
-	<li>Manta: Remover cartão 3G/4G e fechar tampas da manta. (Técnico)
-	<li>Manta: Colocar sistemas a carregar: manta, veiculos, laptops, ACCU, radios (Técnico)
-	<li>Guardar equipamento. (Técnico)
-</ul>
-
-<h3>Upload de Logs</h3>
-<ul class="checklist">
-	<li>Neptus: Sacar todos os logs do veículo (Operador)
-	<li>Neptus: Correr gather-day-logs.sh dentro da pasta 'helper-scripts' no Neptus. (Operador)
-	<li>Neptus: Fazer upload dos logs de missão (respeitar formatação). (Operador)
-	<li>Neptus: Fazer upload do debriefing de missão após reunião. (Coordenador)
-</ul>
+	<li>Make sure no necsave platforms are running.
+	<li>Clear Necsave messages and platforms.
+	<li>Send XT2, NP1 and NP2 into operational area, near the manta gateway (station keeping).
+	<li>Start etc/SeaTrials/07_RO3_Mesh configuration on NP1, NP2, XT2 and GCS.
+	<li>Wait for platforms to connect
+	<li>Stop Station Keeping on NP1, NP2 and XT2	
+	<li>Send necsave mission (ENV_SURVEY), "RO3_SURVEY", "RO3 Mesh Demo"	
+	<li>Open MeshStatePanel
+	<li>After the demo completes, stop NECSAVE on all platforms
+    <ul>
 
   <script type="text/javascript">
     Checklist.init();
