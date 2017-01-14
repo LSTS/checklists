@@ -1,6 +1,5 @@
 var fbkey = sanitize_id(window.location.pathname);
 var fburl = "https://xeklists.firebaseio.com/"+fbkey;
-var fbref = new Firebase(fburl);
 
 var Checklist = Checklist || function () {
 
@@ -14,7 +13,7 @@ var Checklist = Checklist || function () {
     },
   });
 
-  var connectedRef = firebase.database().ref(".info/connected");
+  var connectedRef = new Firebase(fburl).database().ref(".info/connected");
   
   connectedRef.on("value", function(snap) {
     if (snap.val() === true) {
