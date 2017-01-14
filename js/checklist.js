@@ -1,5 +1,5 @@
 var fbkey = sanitize_id(window.location.pathname);
-var fbref = new Firebase("https://xeklists.firebaseio.com/"+fbkey);
+var fburl = "https://xeklists.firebaseio.com/"+fbkey;
 var Checklist = Checklist || function () {
 
   // The checklist object.
@@ -14,7 +14,7 @@ var Checklist = Checklist || function () {
 
   // Define the collection.
   var CheckBoxCollection = Backbone.Firebase.Collection.extend({
-    url: fbref,
+    url: fburl,
     model: CheckBoxModel,
 
     // Gets an existing model, otherwise creates new and returns.
