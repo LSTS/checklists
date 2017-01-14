@@ -11,7 +11,8 @@ js/underscore-min.js
 js/backbone-min.js
 js/backbone.localStorage-min.js
 js/toc.min.js 
+js/firebase.js
 js/backbonefire.js
 js/checklist.js
-js/firebase.js
+
 
