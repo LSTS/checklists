@@ -1,3 +1,5 @@
+var fbkey = sanitize_id(window.location.pathname);
+var fbref = new Firebase("https://xeklists.firebaseio.com/"+fbkey);
 var Checklist = Checklist || function () {
 
   // The checklist object.
@@ -10,8 +12,10 @@ var Checklist = Checklist || function () {
     },
   });
 
+  alert(fbkey);
   // Define the collection.
-  var CheckBoxCollection = Backbone.Collection.extend({
+  var CheckBoxCollection = Backbone.Firebase.Collection.extend({
+    url: fbref,
     model: CheckBoxModel,
 
     // Gets an existing model, otherwise creates new and returns.
@@ -111,7 +115,10 @@ var Checklist = Checklist || function () {
       location.reload();
 
     }
-  }
-
-  
+  }  
 }();
+
+function sanitize_id(ustr_id) {
+  var regex = '[^-A-Za-z0-9+=_]';
+  return ustr_id.replace(new RegExp(regex, 'gi'), '');
+}
