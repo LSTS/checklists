@@ -1,5 +1,7 @@
 var fbkey = sanitize_id(window.location.pathname);
 var fburl = "https://xeklists.firebaseio.com/"+fbkey;
+var fbref = new Firebase(fburl);
+
 var Checklist = Checklist || function () {
 
   // The checklist object.
@@ -10,6 +12,16 @@ var Checklist = Checklist || function () {
     defaults: {
       checked: false
     },
+  });
+
+  var connectedRef = firebase.database().ref(".info/connected");
+  
+  connectedRef.on("value", function(snap) {
+    if (snap.val() === true) {
+      alert("connected");
+    } else {
+      alert("not connected");
+    }
   });
 
   // Define the collection.
