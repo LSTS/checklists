@@ -124,8 +124,79 @@ var Checklist = Checklist || function () {
       localStorage.clear();
       location.reload();
 
-    }
-  }  
+    },
+
+    exportAsJson: function() {
+      let href = window.location.pathname
+      href = href.replace('missions/','').replace('preparation/','').replace('.html','')
+      let paths = href.split("/")
+      paths.shift()
+      for(let i = 0; i < paths.length; i++) {
+        paths[i] = firstLetterUpper(paths[i])
+      }
+      let fileName = paths.join('/')
+      let lastName = paths[paths.length - 1]
+      paths.pop()
+      let pathsFilt = []
+      for(let i = 0; i < paths.length; i++) {
+        if (i != paths.length -1 && paths[i+1].startsWith(paths[i])) continue
+        pathsFilt.push(paths[i])
+      }
+      paths = pathsFilt
+      let gname = paths.join('/')
+      if (gname == '')
+        gname = lastName
+
+      let checklistListJson = []
+      
+      $('.checklist').each(function(index, val) {
+        let name = val.previousElementSibling.innerHTML // its the h3 as title
+        // console.log(">>>> " + name)
+        let itemsJsonObj = []
+        
+        // Get an HTML list ID.
+        var checklistId = $(this).attr('id') || '_checklist_' +  index + '_';
+        
+        $(this).find('>li').each(function(index, val) {
+          let item = {}
+          //console.log("xxxxx!  " + val.children[0].innerHTML);
+          // item["checklist_name"] = val.children[0].children[0].innerHTML
+          // item["checked"] = $(this).attr('data-checked').innerHTML
+
+          $(this).find('>label > input').each(function(index, val) {
+            let ns = val.nextSibling
+            // console.log("-----!  " + (ns.innerText || ns.textContent));
+            item["item_name"] = firstLetterUpper((ns.innerText || ns.textContent).trim())
+            item["checked"] = val.checked
+          });
+          itemsJsonObj.push(item)
+        });
+
+        let clJsonData = {
+          "checklist_name": firstLetterUpper(name),
+          "label": lastName,
+          "items": itemsJsonObj,
+        }
+        checklistListJson.push(clJsonData)
+      });
+
+      let jsonData = {
+        "group_name": lastName,
+        "label": gname,
+        "checklists": checklistListJson,
+      }
+
+      let dataStr = JSON.stringify(jsonData);
+      let dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+  
+      let exportFileDefaultName = fileName.replace('/', '_')+'.json';
+  
+      let linkElement = document.createElement('a');
+      linkElement.setAttribute('href', dataUri);
+      linkElement.setAttribute('download', exportFileDefaultName);
+      linkElement.click();
+    },
+  }
 }();
 
 function sanitize_id(ustr_id) {
