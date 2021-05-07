@@ -23,7 +23,7 @@ table {
 .checklist {
   margin: 0;
   padding: 0;  
-  display: inline-block
+  display: inline-block;
   min-width: 100px;
   max-width: 600px;
 }
@@ -35,7 +35,6 @@ table {
   background-color: #ffcccc;
   color: #aa3333;
   border-radius: 5px;  
-
 }
 
 .checklist li[data-checked="true"] {
@@ -77,4 +76,26 @@ table {
 .reset:hover {
     background-color: #FF4E50; /* Green */
     color: white;
+}
+
+.export {
+  background-color: #0C0000; /* Green */
+  border: none;
+  color: white;
+  padding: 5px 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  border-radius: 5px;
+  right: 10px;
+  bottom: 50px;
+  position: fixed;
+}
+
+.export:hover {
+  background-color: #4ec7ff; /* Green */
+  color: white;
 }
