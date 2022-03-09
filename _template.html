@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xml:lang="en" manifest="_html/offline.appcache">
+
+<head>
+  <title>Operation Checklists</title>
+  <link rel="stylesheet" href="_html/styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="MobileOptimized" content="width" />
+	<meta name="HandheldFriendly" content="true" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <script type="text/javascript" src="_html/jquery.js"></script>
+  <script type="text/javascript" src="_html/underscore.js"></script>
+  <script type="text/javascript" src="_html/backbone.js"></script>
+  <script type="text/javascript" src="_html/backbone.localStorage.js"></script>
+  <script type="text/javascript" src="_html/toc.min.js"></script>
+  <script type="text/javascript" src="_html/checklist.js"></script>
+
+  <meta charset="UTF-8">
+</head>
+
+<body>
+
+  <div class="toc"></div>
+
+  <button class="reset" onclick="Checklist.clear()">Uncheck all</button>
+  <button class="export" onclick="Checklist.exportAsJson()">Export as Checkly</button>
+
+  <!--EDIT BELOW THIS LINE -->
+
+  <h3>Info útil</h3>
+  <ul>
+    <li><strong>Piquete Capitinia Leixões:</strong> +351 916 353 249</li>
+    <li><strong>Eng. Sequeira/POC APDL</strong> +351 967 949 269</li>
+    <li><strong>LSTS (SAS)</strong> +351 225 081 539</li>
+  </ul>
+
+  <h3>Saída LSTS</h3>
+  <ul class="checklist">
+    <li>Verificar que veículos / ACCU / portátil / manta estão carregados. <div>verificar</div>
+    <li>Verificar tiles / mapas da zona de operação. <div>verificar</div>
+    <li>Verificar Saldo GSM dos veículos <a href="https://cliente.meo.pt/meus-produtos">aqui</a>.</li>
+    <li>Carregar equipamento da missão na carrinha.
+  </ul>
+
+  <h3>Antes de colocar veículo na água</h3>
+  <ul class="checklist">
+    <li>Setup de operações
+    <li>Ligar power.
+    <li>Colocar radio+antena na manta e ligar manta.
+    <li>Verificar rede wifi LSTS.
+    <li>Ligar radio VHF no canal 16.
+    <li>Verificar que veículos têm espaço suficiente para armazenamento
+    <li>Enviar/actualizar planos de segurança
+    <li>Activar Reports GSM (120 segundos) e testar abort
+    <li>Activar Reports acústicos (180 segundos)
+    <li>Ligar ACCU e verificar que existe comms com veículo
+    <li>Ligar à capitania a informar sobre início de operações.
+  </ul>
+
+  <h3>Colocar veículo na água</h3>
+  <ul class="checklist">
+    <li>Colocar por tele-operação ou manobra launch (do lado da marina)
+    <li>Verificar se não estão a entrar/sair embarcações da marina.
+    <li>Enviar veículo para dentro da bacia de operações por tele-operação ou plano.
+    <li>Acompanhar com manta+bullet veículo durante saída da marina e entrada na bacia.
+    <li>Colocar veículo em SK do lado da bacia.
+    <li>Colocar Modem na água (op1)
+    <li>Verificar range acústico (op2)
+  </ul>
+
+  <h3>Quando veículos estão recolhidos</h3>
+  <ul class="checklist">
+    <li>Ligar à capitania a informar sobre término de operações.
+    <li>Sacar todos os logs dos veículos
+    <li>Correr gather-day-logs.sh dentro da pasta 'helper-scripts' no Neptus.
+    <li>Fazer upload dos logs de missão (respeitar formatação).
+    <li>Fazer upload do debriefing de missão após reunião.
+  </ul>
+
+  <!-- DO NOT EDIT BELOW THIS LINE -->
+
+  <div>&nbsp;</div>
+  <div>&nbsp;</div>
+  <div>&nbsp;</div>
+  <div>&nbsp;</div>
+  <div>&nbsp;</div>
+
+  <script type="text/javascript">
+    Checklist.init();
+    $('.toc').toc({});
+  </script>
+</body>
+
+</html>

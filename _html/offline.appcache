@@ -1,0 +1,13 @@
+CACHE MANIFEST
+#v2
+
+CACHE:
+equipment.html
+operation.html
+_html/backbone.js
+_html/backbone.localStorage.js
+_html/checklist.js
+_html/jquery.js
+_html/styles.css
+_html/toc.min.js
+_html/underscore.js
