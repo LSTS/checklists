@@ -26,19 +26,47 @@
   <button class="reset" onclick="Checklist.clear()">Uncheck all</button>
   <button class="export" onclick="Checklist.exportAsJson()">Export as Checkly</button>
 
+  <template>
+
+    <div class="note">
+      <h3>Template note</h3>
+      NOTE TEXT
+      <ul>
+        <li><strong>TEMPLATE_TEXT:</strong> TEMPLATE_TEXT</li>
+        <li><strong>TEMPLATE_TEXT</strong> TEMPLATE_TEXT <a href="URL">link</a></li>
+      </ul>
+    </div>
+
+    <!-- Add as many as you like -->
+    <h3>CHECKLIST_NAME</h3>
+    <div class="note">NOTE</div> <!-- optional -->
+    <ul class="checklist">
+      <li>CHECKLIST ITEM <div>ACTION TEXT</div></li>
+      <li>CHECKLIST ITEM <div class="note">NOTE TEXT</div> <div>ACTION TEXT</div></li>
+      <li>CHECKLIST ITEM <a href="URL">link</a></li>
+      <li>CHECKLIST ITEM</li>
+    </ul>
+
+  </template>
+
   <!--EDIT BELOW THIS LINE -->
 
-  <h3>Info útil</h3>
-  <ul>
-    <li><strong>Piquete Capitinia Leixões:</strong> +351 916 353 249</li>
-    <li><strong>Eng. Sequeira/POC APDL</strong> +351 967 949 269</li>
-    <li><strong>LSTS (SAS)</strong> +351 225 081 539</li>
-  </ul>
+  <div class="note">
+    <h3>Info útil</h3>
+    Isto é um teste
+    de 2 linhas
+    <ul>
+      <li><strong>Piquete Capitania Leixões:</strong> +351 916 353 249</li>
+      <li><strong>Eng. Sequeira/POC APDL</strong> +351 967 949 269 <a href="www.lsts.pt">link</a></li>
+      <li><strong>LSTS (SAS)</strong> +351 225 081 539</li>
+    </ul>
+  </div>
 
   <h3>Saída LSTS</h3>
+  <div>Nota</div>
   <ul class="checklist">
     <li>Verificar que veículos / ACCU / portátil / manta estão carregados. <div>verificar</div>
-    <li>Verificar tiles / mapas da zona de operação. <div>verificar</div>
+    <li>Verificar tiles / mapas da zona de operação. <div class="note">Notas <a href="www.lsts.pt">link</a></div> <div>verificar</div>
     <li>Verificar Saldo GSM dos veículos <a href="https://cliente.meo.pt/meus-produtos">aqui</a>.</li>
     <li>Carregar equipamento da missão na carrinha.
   </ul>

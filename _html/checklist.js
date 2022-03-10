@@ -135,42 +135,92 @@ var Checklist = Checklist || function () {
 
       let checklistListJson = []
       
+      let noteCheck = null
+      $('body div.note').eq(0).each(function(index, val) {
+        if (val.parentNode.nodeName.toLowerCase() == 'body' &&
+             val.previousElementSibling.nodeName.toLowerCase() != 'h3') {
+          let txtNote = processTagsAsText(val)
+          if (txtNote != null) {
+            noteCheck = (noteCheck ?? '') + txtNote.trim()
+          }
+        }
+      })
+
       $('.checklist').each(function(index, val) {
-        let name = val.previousElementSibling.innerHTML // its the h3 as title
+        // let name = val.previousElementSibling.innerHTML // its the h3 as title
         // console.log(">>>> " + name)
+        let note = null
         let itemsJsonObj = []
-        
+
+        let prevSib = val.previousElementSibling
+        if (prevSib.nodeName.toLowerCase() != 'h3') {
+          if (note === null) note = ''
+          let txtNote = processTagsAsText(prevSib)
+          if (txtNote != null) {
+            note += txtNote.trim()
+          }
+          prevSib = prevSib.previousElementSibling
+        }
+        let name = prevSib.innerHTML // its the h3 as title
+
         // Get an HTML list ID.
         var checklistId = $(this).attr('id') || '_checklist_' +  index + '_';
         
-        $(this).find('>li').each(function(index, val) {
+        $(this).find('>li').each(function(index_li, val_li) {
           let item = {}
           //console.log("xxxxx!  " + val.children[0].innerHTML);
           // item["checklist_name"] = val.children[0].children[0].innerHTML
           // item["checked"] = $(this).attr('data-checked').innerHTML
 
-          $(this).find('>label > input').each(function(index, val) {
-            let ns = val.nextSibling
+          $(this).find('>label > input').each(function(index_input, val_input) {
+            let ns = val_input.nextSibling
             // console.log("-----!  " + (ns.innerText || ns.textContent));
-            item["item_name"] = firstLetterUpper((ns.innerText || ns.textContent).trim())
-            item["checked"] = val.checked
+            //item["item_name"] = firstLetterUpper((ns.innerText || ns.textContent))
+            //item["item_name"] = (processTagsAsText(ns) ?? 'nuuul')
+            item["item_name"] = ''
+
+            let nss = ns // ns.nextSibling
+            while (nss != null) {
+              if (nss.nodeName.toLowerCase() == 'div') {
+                if (!nss.classList.contains('note')){
+                  item["action"] = firstLetterUpper((nss.textContent).trim())
+                }
+                else {
+                  let txtNote = processTagsAsText(nss)
+                  if (txtNote != null) {
+                    item["note"] = txtNote.trim()
+                  }
+                }
+              } else {
+                let txt = processTagsAsText(nss)
+                if (txt != null) {
+                  item["item_name"] += txt
+                }
+              }
+              nss = nss.nextSibling
+            }
+
+            item["item_name"] = firstLetterUpper(item["item_name"].trim())
+            item["checked"] = val_input.checked
           });
+
           itemsJsonObj.push(item)
         });
 
-        let clJsonData = {
-          "checklist_name": firstLetterUpper(name),
-          "label": lastName,
-          "items": itemsJsonObj,
-        }
+        let clJsonData = {}
+        clJsonData["checklist_name"] = firstLetterUpper(name)
+        clJsonData["label"] = lastName
+        if (note != null) clJsonData["note"] = note.trim()
+        clJsonData["items"] = itemsJsonObj
+
         checklistListJson.push(clJsonData)
       });
 
-      let jsonData = {
-        "group_name": lastName,
-        "label": gname,
-        "checklists": checklistListJson,
-      }
+      let jsonData = {}
+      jsonData["group_name"] = lastName
+      jsonData["label"] = gname
+      if (noteCheck != null) jsonData["note"] = noteCheck.trim()
+      jsonData["checklists"] = checklistListJson
 
       let dataStr = JSON.stringify(jsonData);
       let dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
@@ -189,4 +239,59 @@ var Checklist = Checklist || function () {
     return newString;
   }
   
+  function processTagsAsText(node) {
+    //let nd = node.firstChild
+    let retTxt = null
+    if (node.nodeType === Node.TEXT_NODE) {
+      retTxt = ((node.innerText || node.textContent) ?? '')
+    }
+    for (let nd of node.childNodes) {
+      if (nd == null) continue
+
+      if (retTxt == null) retTxt = ''
+
+      // if (nd.nodeType === Node.TEXT_NODE) {
+      //   retTxt += (nd.textContent ?? '').trim()
+      //   continue
+      // }
+
+      switch (nd.nodeName.toLowerCase()) {
+        case 'h1':
+        case 'h2':
+        case 'h3':
+        case 'h4':
+        case 'h5':
+        case 'h6':
+        case 'div':
+        case 'p':
+          retTxt += '\n' + (processTagsAsText(nd) ?? '') + '\n'
+          break;
+
+        case 'br':
+          retTxt += '\n'
+          break;
+
+        case 'ul':
+          retTxt += '\n ' + (processTagsAsText(nd) ?? '') + '\n'
+          break
+
+        case 'li':
+          retTxt += '\n - ' + (processTagsAsText(nd) ?? '')
+          break
+
+        case 'a':
+          retTxt += (processTagsAsText(nd) ?? '') + ' ' + (nd.getAttribute('href') ?? '')
+          break
+
+        default:
+          if (nd.nodeType === Node.TEXT_NODE)
+            retTxt += (nd.innerText || nd.textContent)
+          else
+            retTxt += (nd.textContent ?? '')
+          break;
+      }
+    }
+
+    return retTxt
+  }
 }();
