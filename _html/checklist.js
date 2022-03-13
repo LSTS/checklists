@@ -272,6 +272,7 @@ var Checklist = Checklist || function () {
           break;
 
         case 'ul':
+        case 'ol':
           retTxt += '\n ' + (processTagsAsText(nd) ?? '') + '\n'
           break
 
