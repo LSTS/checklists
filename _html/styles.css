@@ -201,6 +201,11 @@ div.note {
   font-size: smaller;
 }
 
+.toc .toc-h1 {
+  visibility: hidden;
+  display: none;
+}
+
 .toc .toc-h2 {
   padding-left: 10px;
 }

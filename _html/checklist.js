@@ -113,6 +113,13 @@ var Checklist = Checklist || function () {
         }
       });
 
+      $('body').each(function(index, val) {
+        let fnGnLb = extractFileNameAndGroupNameAndLabel()
+        let groupName = fnGnLb[1]
+        let lh1 = document.createElement("h1");
+        lh1.appendChild(document.createTextNode(groupName))
+        val.prepend(lh1)
+      });
     },
 
     // Returns clear function.
@@ -124,25 +131,30 @@ var Checklist = Checklist || function () {
     },
 
     exportAsJson: function() {
-      let href = window.location.pathname
-      href = href.replace('missions/','').replace('preparation/','').replace('.html','')
-      let paths = href.split("/")
-      paths.shift()
-      for(let i = 0; i < paths.length; i++) {
-        paths[i] = firstLetterUpper(paths[i])
-      }
-      let fileName = paths.join('/')
-      let lastName = paths[paths.length - 1]
-      paths.pop()
-      let pathsFilt = []
-      for(let i = 0; i < paths.length; i++) {
-        if (i != paths.length -1 && paths[i+1].startsWith(paths[i])) continue
-        pathsFilt.push(paths[i])
-      }
-      paths = pathsFilt
-      let gname = paths.join('/')
-      if (gname == '')
-        gname = lastName
+      // let href = window.location.pathname
+      // href = href.replace('missions/','').replace('preparation/','').replace('.html','')
+      // let paths = href.split("/")
+      // paths.shift()
+      // for(let i = 0; i < paths.length; i++) {
+      //   paths[i] = firstLetterUpper(paths[i])
+      // }
+      // let fileName = paths.join('/')
+      // let lastName = paths[paths.length - 1]
+      // paths.pop()
+      // let pathsFilt = []
+      // for(let i = 0; i < paths.length; i++) {
+      //   if (i != paths.length -1 && paths[i+1].startsWith(paths[i])) continue
+      //   pathsFilt.push(paths[i])
+      // }
+      // paths = pathsFilt
+      // let gname = paths.join('/')
+      // if (gname == '')
+      //   gname = lastName
+
+      let fnGnLb = extractFileNameAndGroupNameAndLabel()
+      let fileName = fnGnLb[0]
+      let lastName = fnGnLb[1]
+      let gname = fnGnLb[2]
 
       let checklistListJson = []
       
@@ -255,6 +267,30 @@ var Checklist = Checklist || function () {
       linkElement.setAttribute('download', exportFileDefaultName);
       linkElement.click();
     },
+  }
+
+  function extractFileNameAndGroupNameAndLabel() {
+    let href = window.location.pathname
+    href = href.replace('missions/','').replace('preparation/','').replace('.html','')
+    let paths = href.split("/")
+    paths.shift()
+    for(let i = 0; i < paths.length; i++) {
+      paths[i] = firstLetterUpper(paths[i])
+    }
+    let fileName = paths.join('/')
+    let lastName = paths[paths.length - 1]
+    paths.pop()
+    let pathsFilt = []
+    for(let i = 0; i < paths.length; i++) {
+      if (i != paths.length -1 && paths[i+1].startsWith(paths[i])) continue
+      pathsFilt.push(paths[i])
+    }
+    paths = pathsFilt
+    let gname = paths.join('/')
+    if (gname == '')
+      gname = lastName
+
+    return [fileName, lastName, gname]
   }
 
   function firstLetterUpper(theString) {
