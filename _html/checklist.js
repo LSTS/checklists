@@ -307,6 +307,20 @@ var Checklist = Checklist || function () {
           retTxt += (processTagsAsText(nd) ?? '') + ' ' + (nd.getAttribute('href') ?? '')
           break
 
+        case 'i':
+        case 'em':
+            retTxt += '*' + (processTagsAsText(nd) ?? '') + '*'
+          break
+
+        case 'b':
+        case 'strong':
+              retTxt += '**' + (processTagsAsText(nd) ?? '') + '**'
+            break
+
+        case 'cite':
+              retTxt += '`' + (processTagsAsText(nd) ?? '') + '`'
+            break
+
         default:
           if (nd.nodeType === Node.TEXT_NODE)
             retTxt += (nd.innerText || nd.textContent)
