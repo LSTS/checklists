@@ -257,7 +257,7 @@ var Checklist = Checklist || function () {
       if (noteCheck != null) jsonData["note"] = noteCheck.trim()
       jsonData["checklists"] = checklistListJson
 
-      let dataStr = JSON.stringify(jsonData);
+      let dataStr = JSON.stringify(jsonData, null, '  ');
       let dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
   
       let exportFileDefaultName = fileName.replace('/', '_')+'.json';
