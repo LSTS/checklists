@@ -290,7 +290,7 @@ var Checklist = Checklist || function () {
     if (gname == '')
       gname = lastName
 
-    return [fileName, lastName, gname]
+    return [fileName, lastName.trim(), gname.trim()]
   }
 
   function decodeHtml(html) {
