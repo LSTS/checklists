@@ -28,14 +28,6 @@ table {
    margin: 12px 12px 12px 12px;  
 }
 
-@media screen and (min-width: 640px) {
-  div.panel {
-    width: auto;
-    width: 46%;
-    margin: 0 2% 0 2%;
-  }
-}
-
 h1, h2, h3, h4, h5, h6 {
 	font-family: 'Titillium Web', "Trebuchet MS", "Trebuchet", "Nimbus Sans L", sans-serif;
 	color: #474747;
@@ -47,7 +39,7 @@ p {
 }
 
 a {
-  color: rgb(63, 142, 245);
+  color: #3f8ef5;
 }
 
 input[type=checkbox]:checked {
@@ -129,15 +121,6 @@ div.note {
   float: right;
 }
 
-.toc a {
-  /*color: rgb(95, 95, 244);*/
-  text-decoration: none;
-  font-size: 15px;
-}
-.toc ul {
-  list-style-type: none;
-}
-
 .reset {
     background-color: #0C0000; /* Green */
     border: none;
@@ -180,6 +163,64 @@ div.note {
 .export:hover {
   background-color: #4ec7ff; /* Green */
   color: white;
+}
+
+/*TOC*/
+.toc {
+  /* top: 0px; */
+  /* left: 0px; */
+  /* height: 100%; */
+  /* position: fixed; */
+  /* background: #333; */
+  /* box-shadow: inset -5px 0 5px 0px #000; */
+  /* width: 150px; */
+  /* padding-top: 20px; */
+  /* color: #fff; */
+  margin: 10px 0 5px 0;
+  padding: 5px;
+  background: #ccc4;
+  border-style: dashed;
+  border-color: #ccc4;
+  border-radius: 2em;
+}
+
+.toc ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  list-style-type: none;
+}
+
+.toc li {
+  padding: 5px 10px;
+}
+
+.toc a {
+  text-decoration: none;
+  display: block;
+  font-size: smaller;
+}
+
+.toc .toc-h2 {
+  padding-left: 10px;
+}
+
+.toc .toc-h3 {
+  padding-left: 20px;
+}
+
+.toc .toc-active {
+  /* background: #336699; */
+  /* box-shadow: inset -5px 0px 10px -5px #000; */
+}
+
+
+@media screen and (min-width: 640px) {
+  div.panel {
+    width: auto;
+    width: 46%;
+    margin: 0 2% 0 2%;
+  }
 }
 
 @media(min-width: 320px) {
