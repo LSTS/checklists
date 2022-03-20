@@ -278,7 +278,7 @@ var Checklist = Checklist || function () {
       paths[i] = firstLetterUpper(paths[i])
     }
     let fileName = paths.join('/')
-    let lastName = paths[paths.length - 1]
+    let lastName = decodeURI(paths[paths.length - 1]).replace(/[_-]/g, ' ')
     paths.pop()
     let pathsFilt = []
     for(let i = 0; i < paths.length; i++) {
@@ -291,6 +291,12 @@ var Checklist = Checklist || function () {
       gname = lastName
 
     return [fileName, lastName, gname]
+  }
+
+  function decodeHtml(html) {
+    var txt = document.createElement("textarea");
+    txt.innerHTML = html;
+    return txt.value;
   }
 
   function firstLetterUpper(theString) {
