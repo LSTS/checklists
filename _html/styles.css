@@ -12,6 +12,13 @@ body {
   border-radius: 2em;
 }
 
+section {
+  background-color: #ccc4;
+  border-radius: 2em;
+  padding: 1em;
+  margin: 1em 0em;
+}
+
 div.panel {
   float: left;
   width: auto;
@@ -97,6 +104,16 @@ input[type=button], input[type=submit], input[type=reset] {
   margin: 10px 0 5px 0;
   padding: 5px;
   color: #4c4c4c;
+  border-color: #fffb;
+}
+div.note {
+  border-style: dashed;
+  border-color: #ccc4;
+  border-radius: 2em;
+}
+.checklist li div.note {
+  border-width: 3px;
+  border-radius: 1em;
 }
 
 .checklist li[data-checked="true"] {
