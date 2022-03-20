@@ -102,6 +102,17 @@ var Checklist = Checklist || function () {
 
       // Fetch data from the storage.
       this.checklist.fetch({ success: attachChecklist });
+
+      $('body section').each(function(index, val) {
+        let idAttr = val.getAttribute("id")
+        if (idAttr != null) {
+          let labelToBe = firstLetterUpper(idAttr)
+          let lh2 = document.createElement("h2");
+          lh2.appendChild(document.createTextNode(labelToBe))
+          val.prepend(lh2)
+        }
+      });
+
     },
 
     // Returns clear function.
@@ -151,6 +162,18 @@ var Checklist = Checklist || function () {
         // console.log(">>>> " + name)
         let note = null
         let itemsJsonObj = []
+
+        let clabel = lastName
+        let parentNode = val.parentNode
+        if (parentNode.nodeName.toLowerCase() == 'section') {
+          let idAttr = parentNode.getAttribute("id")
+          if (idAttr != null) {
+            let labelToBe = firstLetterUpper(idAttr)
+            clabel = labelToBe
+          } else {
+            clabel = null
+          }
+        }
 
         let prevSib = val.previousElementSibling
         if (prevSib.nodeName.toLowerCase() != 'h3') {
@@ -209,7 +232,7 @@ var Checklist = Checklist || function () {
 
         let clJsonData = {}
         clJsonData["checklist_name"] = firstLetterUpper(name)
-        clJsonData["label"] = lastName
+        if (clabel != null) clJsonData["label"] = clabel
         if (note != null) clJsonData["note"] = note.trim()
         clJsonData["items"] = itemsJsonObj
 

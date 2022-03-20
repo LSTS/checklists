@@ -48,6 +48,20 @@
       <li>CHECKLIST ITEM</li>
     </ul>
 
+    <!-- Add as many as you like -->
+    <!-- Sections group checklists into labels. If id is not present means 'empty' group. -->
+    <section id = "LABEL">
+      <!-- Add as many as you like -->
+      <h3>CHECKLIST_NAME</h3>
+      <div class="note">NOTE</div> <!-- optional -->
+      <ul class="checklist">
+        <li>CHECKLIST ITEM <div>ACTION TEXT</div></li>
+        <li>CHECKLIST ITEM <div class="note">NOTE TEXT</div> <div>ACTION TEXT</div></li>
+        <li>CHECKLIST ITEM <a href="URL">link</a></li>
+        <li>CHECKLIST ITEM</li>
+      </ul>
+    </section>
+
   </template>
 
   <!--EDIT BELOW THIS LINE -->
@@ -63,49 +77,55 @@
     </ul>
   </div>
 
-  <h3>Saída LSTS</h3>
-  <div>Nota</div>
-  <ul class="checklist">
-    <li>Verificar que veículos / ACCU / portátil / manta estão carregados. <div>verificar</div>
-    <li>Verificar tiles / mapas da zona de operação. <div class="note">Notas <a href="www.lsts.pt">link</a></div> <div>verificar</div>
-    <li>Verificar Saldo GSM dos veículos <a href="https://cliente.meo.pt/meus-produtos">aqui</a>.</li>
-    <li>Carregar equipamento da missão na carrinha.
-  </ul>
+  <section>
+    <h3>Saída LSTS</h3>
+    <div>Nota</div>
+    <ul class="checklist">
+      <li>Verificar que veículos / ACCU / portátil / manta estão carregados. <div>verificar</div>
+      <li>Verificar tiles / mapas da zona de operação. <div class="note">Notas <a href="www.lsts.pt">link</a></div> <div>verificar</div>
+      <li>Verificar Saldo GSM dos veículos <a href="https://cliente.meo.pt/meus-produtos">aqui</a>.</li>
+      <li>Carregar equipamento da missão na carrinha.
+    </ul>
+  </section>
 
-  <h3>Antes de colocar veículo na água</h3>
-  <ul class="checklist">
-    <li>Setup de operações
-    <li>Ligar power.
-    <li>Colocar radio+antena na manta e ligar manta.
-    <li>Verificar rede wifi LSTS.
-    <li>Ligar radio VHF no canal 16.
-    <li>Verificar que veículos têm espaço suficiente para armazenamento
-    <li>Enviar/actualizar planos de segurança
-    <li>Activar Reports GSM (120 segundos) e testar abort
-    <li>Activar Reports acústicos (180 segundos)
-    <li>Ligar ACCU e verificar que existe comms com veículo
-    <li>Ligar à capitania a informar sobre início de operações.
-  </ul>
+  <section id = "Em missão">
+    <h3>Antes de colocar veículo na água</h3>
+    <ul class="checklist">
+      <li>Setup de operações
+      <li>Ligar power.
+      <li>Colocar radio+antena na manta e ligar manta.
+      <li>Verificar rede wifi LSTS.
+      <li>Ligar radio VHF no canal 16.
+      <li>Verificar que veículos têm espaço suficiente para armazenamento
+      <li>Enviar/actualizar planos de segurança
+      <li>Activar Reports GSM (120 segundos) e testar abort
+      <li>Activar Reports acústicos (180 segundos)
+      <li>Ligar ACCU e verificar que existe comms com veículo
+      <li>Ligar à capitania a informar sobre início de operações.
+    </ul>
 
-  <h3>Colocar veículo na água</h3>
-  <ul class="checklist">
-    <li>Colocar por tele-operação ou manobra launch (do lado da marina)
-    <li>Verificar se não estão a entrar/sair embarcações da marina.
-    <li>Enviar veículo para dentro da bacia de operações por tele-operação ou plano.
-    <li>Acompanhar com manta+bullet veículo durante saída da marina e entrada na bacia.
-    <li>Colocar veículo em SK do lado da bacia.
-    <li>Colocar Modem na água (op1)
-    <li>Verificar range acústico (op2)
-  </ul>
+    <h3>Colocar veículo na água</h3>
+    <ul class="checklist">
+      <li>Colocar por tele-operação ou manobra launch (do lado da marina)
+      <li>Verificar se não estão a entrar/sair embarcações da marina.
+      <li>Enviar veículo para dentro da bacia de operações por tele-operação ou plano.
+      <li>Acompanhar com manta+bullet veículo durante saída da marina e entrada na bacia.
+      <li>Colocar veículo em SK do lado da bacia.
+      <li>Colocar Modem na água (op1)
+      <li>Verificar range acústico (op2)
+    </ul>
+  </section>
 
-  <h3>Quando veículos estão recolhidos</h3>
-  <ul class="checklist">
-    <li>Ligar à capitania a informar sobre término de operações.
-    <li>Sacar todos os logs dos veículos
-    <li>Correr gather-day-logs.sh dentro da pasta 'helper-scripts' no Neptus.
-    <li>Fazer upload dos logs de missão (respeitar formatação).
-    <li>Fazer upload do debriefing de missão após reunião.
-  </ul>
+  <section id = "Pós-missão">
+    <h3>Quando veículos estão recolhidos</h3>
+    <ul class="checklist">
+      <li>Ligar à capitania a informar sobre término de operações.
+      <li>Sacar todos os logs dos veículos
+      <li>Correr gather-day-logs.sh dentro da pasta 'helper-scripts' no Neptus.
+      <li>Fazer upload dos logs de missão (respeitar formatação).
+      <li>Fazer upload do debriefing de missão após reunião.
+    </ul>
+  </section>
 
   <!-- DO NOT EDIT BELOW THIS LINE -->
 
