@@ -300,7 +300,8 @@ var Checklist = Checklist || function () {
   }
 
   function firstLetterUpper(theString) {
-    var newString = theString.replace(/(^\s*\w|[\.\!\?]\s*\w)/g,function(c){return c.toUpperCase()});
+    //var newString = theString.replace(/(^\s*\w|[\.\!\?]\s*\w)/g,function(c){return c.toUpperCase()});
+    var newString = theString.replace(/(^\s*\w|[\.\!\?]\s*\w)/,function(c){return c.toUpperCase()});
     return newString;
   }
   
