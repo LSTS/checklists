@@ -310,7 +310,16 @@ var Checklist = Checklist || function () {
     let retTxt = null;
     if (node.nodeType === Node.TEXT_NODE) {
       retTxt = ((node.innerText || node.textContent) ?? '');
+    } else if (node.nodeType === Node.ELEMENT_NODE) {
+      if (retTxt == null) retTxt = '';
+      // switch (node.nodeName.toLowerCase()) {
+      //   case 'a':
+      //     console.log('--->' + node.getAttribute('href'));
+      //     retTxt += (processTagsAsText(nd) ?? '') + ' ' + (nd.getAttribute('href') ?? '');
+      //     break
+      // }
     }
+
     for (let nd of node.childNodes) {
       if (nd == null) continue;
 
@@ -339,15 +348,15 @@ var Checklist = Checklist || function () {
 
         case 'ul':
         case 'ol':
-          retTxt += '\n ' + (processTagsAsText(nd) ?? '') + '\n';
+          retTxt += '\n ' + (processTagsAsText(nd) ?? '').trim() + '\n';
           break
 
         case 'li':
           retTxt += '\n - ' + (processTagsAsText(nd) ?? '');
           break
 
-        case 'a':
-          retTxt += (processTagsAsText(nd) ?? '') + ' ' + (nd.getAttribute('href') ?? '');
+        case 'a': // Post process bellow for the href
+          retTxt += (processTagsAsText(nd) ?? '');// + ' ' + (nd.getAttribute('href') ?? '');
           break
 
         case 'i':
@@ -373,6 +382,16 @@ var Checklist = Checklist || function () {
       }
     }
 
+    if (node.nodeType === Node.ELEMENT_NODE) {
+      if (retTxt == null) retTxt = '';
+      switch (node.nodeName.toLowerCase()) {
+        case 'a':
+          retTxt += ' ' + (node.getAttribute('href') ?? '');
+          break
+        default:
+          break;
+      }
+    }
     return retTxt
   }
 }();
