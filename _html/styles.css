@@ -1,6 +1,41 @@
 @import url('https://fonts.googleapis.com/css?family=Titillium+Web&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans&display=swap');
 
+:root {
+  --background-color: #f6f6f6;
+  --background-color-section: #ccc4;
+  --background-color-button-action: #0c0000;
+  --font-color: #222;
+  --font-color-header: #474747;
+  --link-color: #3f8ef5;
+}
+:root.dark {
+  --background-color: #121212;
+  --background-color-section: #ccc4;
+  --background-color-button-action: #fcffff;
+  --font-color: #f6f6f6;
+  --font-color-header: #c0c0c0;
+  --link-color: #809fff;
+}
+@media (prefers-color-scheme: dark) {
+  :root.light {
+    --background-color: #f6f6f6;
+    --background-color-section: #ccc4;
+    --background-color-button-action: #0c0000;
+    --font-color: #222;
+    --font-color-header: #474747;
+    --link-color: #3f8ef5;
+  }
+  :root {
+    --background-color: #121212;
+    --background-color-section: #ccc4
+    --background-color-button-action: #fcffff;
+    --font-color: #f6f6f6;
+    --font-color-header: #c0c0c0;
+    --link-color: #809fff;
+  }
+}
+
 body {
   /*font-family: Arial, Verdana;*/
   font-family: 'Noto Sans', Tahoma, Arial, Helvetica, sans-serif;
@@ -9,11 +44,13 @@ body {
   width: 285px;
   margin: auto;
   /*background-color: #333333;*/
+  background-color: var(--background-color);
+  color: var(--font-color);
   border-radius: 2em;
 }
 
 section {
-  background-color: #ccc4;
+  background-color: var(--background-color-section);
   border-radius: 2em;
   padding: 1em;
   margin: 1em 0em;
@@ -30,7 +67,7 @@ table {
 
 h1, h2, h3, h4, h5, h6 {
 	font-family: 'Titillium Web', "Trebuchet MS", "Trebuchet", "Nimbus Sans L", sans-serif;
-	color: #474747;
+	color: var(--font-color-header);
 	margin: 1em 0 .3em;
 }
 
@@ -39,7 +76,7 @@ p {
 }
 
 a {
-  color: #3f8ef5;
+  color: var(--link-color);
 }
 
 input[type=checkbox]:checked {
@@ -102,6 +139,7 @@ div.note {
   border-style: dashed;
   border-color: #ccc4;
   border-radius: 2em;
+  color: var(--font-color);
 }
 .checklist li div.note {
   border-width: 3px;
@@ -122,9 +160,9 @@ div.note {
 }
 
 .reset {
-    background-color: #0C0000; /* Green */
+    background-color: var(--background-color-button-action); /* Green */
     border: none;
-    color: white;
+    color: var(--background-color); /*white*/
     padding: 5px 12px;
     text-align: center;
     text-decoration: none;
@@ -140,13 +178,13 @@ div.note {
 
 .reset:hover {
     background-color: #FF4E50; /* Green */
-    color: white;
+    /* color: white; */
 }
 
 .export {
-  background-color: #0C0000; /* Green */
+  background-color: var(--background-color-button-action); /* Green */
   border: none;
-  color: white;
+  color: var(--background-color); /*white*/
   padding: 5px 12px;
   text-align: center;
   text-decoration: none;
@@ -162,7 +200,7 @@ div.note {
 
 .export:hover {
   background-color: #4ec7ff; /* Green */
-  color: white;
+  /* color: white; */
 }
 
 /*TOC*/
@@ -183,37 +221,30 @@ div.note {
   border-color: #ccc4;
   border-radius: 2em;
 }
-
 .toc ul {
   margin: 0;
   padding: 0;
   list-style: none;
   list-style-type: none;
 }
-
 .toc li {
   padding: 5px 10px;
 }
-
 .toc a {
   text-decoration: none;
   display: block;
   font-size: smaller;
 }
-
 .toc .toc-h1 {
   visibility: hidden;
   display: none;
 }
-
 .toc .toc-h2 {
   padding-left: 10px;
 }
-
 .toc .toc-h3 {
   padding-left: 20px;
 }
-
 .toc .toc-active {
   /* background: #336699; */
   /* box-shadow: inset -5px 0px 10px -5px #000; */

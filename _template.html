@@ -15,11 +15,21 @@
   <script type="text/javascript" src="_html/backbone.localStorage.js"></script>
   <script type="text/javascript" src="_html/toc.min.js"></script>
   <script type="text/javascript" src="_html/checklist.js"></script>
+  <link rel="stylesheet" href="_html/theme-changer.css" />
 
   <meta charset="UTF-8">
 </head>
 
 <body>
+  <div class="theme-toggle-container">
+    <img id="theme-light-icon" alt="light theme icon" src="_html/light-icon.svg">
+    <img id="theme-dark-icon" alt="dark theme icon" src="_html/dark-icon.svg">
+    <label class="theme-toggle-switch" for="theme-toggle-input">
+        <button id="theme-toggle-input">Toggle Dark-Mode</button>
+        <div class="theme-toggle-switch__control"></div>
+    </label>
+  </div>
+  <script type="text/javascript" src="_html/theme-changer.js"></script>
 
   <div class="toc"></div>
 
