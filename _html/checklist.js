@@ -306,14 +306,14 @@ var Checklist = Checklist || function () {
   
   function processTagsAsText(node) {
     //let nd = node.firstChild
-    let retTxt = null
+    let retTxt = null;
     if (node.nodeType === Node.TEXT_NODE) {
-      retTxt = ((node.innerText || node.textContent) ?? '')
+      retTxt = ((node.innerText || node.textContent) ?? '');
     }
     for (let nd of node.childNodes) {
-      if (nd == null) continue
+      if (nd == null) continue;
 
-      if (retTxt == null) retTxt = ''
+      if (retTxt == null) retTxt = '';
 
       // if (nd.nodeType === Node.TEXT_NODE) {
       //   retTxt += (nd.textContent ?? '').trim()
@@ -329,45 +329,45 @@ var Checklist = Checklist || function () {
         case 'h6':
         case 'div':
         case 'p':
-          retTxt += '\n' + (processTagsAsText(nd) ?? '') + '\n'
+          retTxt += '\n' + (processTagsAsText(nd) ?? '') + '\n';
           break;
 
         case 'br':
-          retTxt += '\n'
+          retTxt += '\n';
           break;
 
         case 'ul':
         case 'ol':
-          retTxt += '\n ' + (processTagsAsText(nd) ?? '') + '\n'
+          retTxt += '\n ' + (processTagsAsText(nd) ?? '') + '\n';
           break
 
         case 'li':
-          retTxt += '\n - ' + (processTagsAsText(nd) ?? '')
+          retTxt += '\n - ' + (processTagsAsText(nd) ?? '');
           break
 
         case 'a':
-          retTxt += (processTagsAsText(nd) ?? '') + ' ' + (nd.getAttribute('href') ?? '')
+          retTxt += (processTagsAsText(nd) ?? '') + ' ' + (nd.getAttribute('href') ?? '');
           break
 
         case 'i':
         case 'em':
-            retTxt += '*' + (processTagsAsText(nd) ?? '') + '*'
+            retTxt += '*' + (processTagsAsText(nd) ?? '') + '*';
           break
 
         case 'b':
         case 'strong':
-              retTxt += '**' + (processTagsAsText(nd) ?? '') + '**'
+              retTxt += '**' + (processTagsAsText(nd) ?? '') + '**';
             break
 
         case 'cite':
-              retTxt += '`' + (processTagsAsText(nd) ?? '') + '`'
+              retTxt += '`' + (processTagsAsText(nd) ?? '') + '`';
             break
 
         default:
           if (nd.nodeType === Node.TEXT_NODE)
-            retTxt += (nd.innerText || nd.textContent)
+            retTxt += (nd.innerText || nd.textContent);
           else
-            retTxt += (nd.textContent ?? '')
+            retTxt += (nd.textContent ?? '');
           break;
       }
     }
