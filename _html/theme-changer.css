@@ -5,8 +5,8 @@
   display: none;
 }
 .theme-toggle-switch__control {
-  width: 40px;
-  height: 20px;
+  width: 50px;
+  height: 24px;
   border-radius: 7px;
   position: relative;
   /* background: #999; */
@@ -15,14 +15,45 @@
   margin: 5px auto;
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
+  background-image: url("light-icon.svg");
+  background-size: 22px 22px;
+  background-repeat: no-repeat;
+  background-position: 25px;
 }
-.theme-toggle-switch__control::after,
 .theme-toggle-switch__control:hover {
   background: var(--background-color-section);
+  background-image: url("light-icon.svg");
+  background-size: 22px 22px;
+  background-repeat: no-repeat;
+  background-position: 25px;
+}
+#theme-toggle-input:checked + .theme-toggle-switch__control {
+  background-image: url("dark-icon.svg");
+  background-size: 22px 22px;
+  background-repeat: no-repeat;
+  background-position: left;
+}
+.theme-toggle-switch__control:hover {
+}
+.theme-toggle-switch__control::after {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  background: var(--background-color);
+  transition: left 0.25s;
+  -webkit-transition-duration: left 0.25s; /* Safari */
+}
+#theme-toggle-input:checked + .theme-toggle-switch__control::after {
+  left: 28px;
 }
 .theme-toggle-container {
-  width: 22px;
-  height: 22px;
+  width: 26px;
+  height: 26px;
   position: relative;
   margin: 5px auto;
   top: 0px;

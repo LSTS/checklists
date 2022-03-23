@@ -39,9 +39,11 @@
         if (theme == "dark") {
             htmlElem.classList.add("dark");
             htmlElem.classList.remove("light");
+            btn.checked = true;
         } else {
             htmlElem.classList.remove("dark");
             htmlElem.classList.add("light");
+            btn.checked = false;
         }
         currentTheme = theme;
 
