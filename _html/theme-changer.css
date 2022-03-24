@@ -51,7 +51,7 @@
 #theme-toggle-input:checked + .theme-toggle-switch__control::after {
   left: 28px;
 }
-.theme-toggle-container {
+.theme-toggle {
   width: 26px;
   height: 26px;
   position: relative;
@@ -59,16 +59,16 @@
   top: 0px;
   right: 2px;
 }
-.theme-toggle-container img {
+.theme-toggle img {
   width: 20px;
   display: none;
   margin-right: 10px;
   outline: none;
 }
-.theme-toggle-container img.active {
+.theme-toggle img.active {
   display: block;
 }
-.theme-toggle-container {
+.theme-toggle {
     display: flex;
     flex-direction: row;
     align-items: center;
