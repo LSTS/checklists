@@ -20,12 +20,14 @@
   background-repeat: no-repeat;
   background-position: 25px;
 }
-.theme-toggle-switch__control:hover {
-  background: var(--background-color-section);
-  background-image: url("light-icon.svg");
-  background-size: 22px 22px;
-  background-repeat: no-repeat;
-  background-position: 25px;
+@media (hover: hover) {
+  .theme-toggle-switch__control:hover {
+    background: var(--background-color-section);
+    background-image: url("light-icon.svg");
+    background-size: 22px 22px;
+    background-repeat: no-repeat;
+    background-position: 25px;
+  }
 }
 #theme-toggle-input:checked + .theme-toggle-switch__control {
   background-image: url("dark-icon.svg");
