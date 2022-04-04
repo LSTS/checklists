@@ -33,8 +33,6 @@
   background-repeat: no-repeat;
   background-position: left;
 }
-.theme-toggle-switch__control:hover {
-}
 .theme-toggle-switch__control::after {
   content: '';
   display: block;
@@ -46,7 +44,6 @@
   top: 2px;
   background: var(--background-color);
   transition: left 0.25s;
-  -webkit-transition-duration: left 0.25s; /* Safari */
 }
 #theme-toggle-input:checked + .theme-toggle-switch__control::after {
   left: 28px;
