@@ -1,21 +1,21 @@
-// This script ihas the following files companions:
-//  - theme.changer.css
-//  - light-icon.svg
-//  - dark-icon.svg
-//
-//
-// In the head add the css file or include it on another css
-// (replace '_html' with the proper path):
-//  - <link rel="stylesheet" href="_html/theme-changer.css" />
-//  - @import url('theme-changer.css');
-//
-// To use add the following into the body
-// (replace '_html' with the proper path):
-//
-//   <div class="theme-toggle"></div>
-//   <script src="_html/theme-changer.js"></script>
-//
-// @author: Paulo Dias
+//! This script ihas the following files companions:
+//!  - theme.changer.css
+//!  - light-icon.svg
+//!  - dark-icon.svg
+//!
+//!
+//! In the head add the css file or include it on another css
+//! (replace '_html' with the proper path):
+//!  - <link rel="stylesheet" href="_html/theme-changer.css" />
+//!  - @import url('theme-changer.css');
+//!
+//! To use add the following into the body
+//! (replace '_html' with the proper path):
+//!
+//!   <div class="theme-toggle"></div>
+//!   <script src="_html/theme-changer.js"></script>
+//!
+//! @author: Paulo Dias
 
 (() => {
     const insertThemeToggleElementsIntoThemeTogleElement = (() => {
